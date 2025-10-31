@@ -1,79 +1,74 @@
-🚀 GoQuant REG-NMS Cryptocurrency Matching Engine
+# 🚀 GoQuant REG-NMS Cryptocurrency Matching Engine
 
-A high-performance cryptocurrency matching engine inspired by US SEC Reg-NMS order-matching rules, built using Python + Flask.
+A **high-performance cryptocurrency matching engine** inspired by **US SEC Reg-NMS order-matching rules**, built with **Python + Flask**.
 
-Supports limit/market orders, real-time order book tracking, maker-taker fees, and a browser-based demo UI.
+Supports **Limit & Market** orders, price-time priority, real-time orderbook, maker-taker fees, and a browser-based trading demo.
 
-✅ Features
+---
 
-⚡ High-performance matching engine core
+## ✅ Features
 
-📈 Maintains real-time order book (bids & asks)
+- ⚡ High-performance matching engine
+- 📈 Real-time order book (bids/asks)
+- 🔄 Limit & Market order support
+- 🥇 FIFO (Price-time priority)
+- 💰 Maker-Taker fee model
+- 🎯 Decimal precision (no float errors)
+- 🌐 REST API + UI Demo
+- 🧪 Easy local testing
 
-🔄 Supports Limit & Market orders
+---
 
-↕ FIFO matching (Price-Time priority)
-
-💰 Maker-Taker fee model
-
-🌐 REST API with Flask
-
-🧠 Decimal precision — no floating-point errors
-
-🧪 Local run & API test support
-
-🎨 Visual trading demo page
-
-📁 Project Structure
+## 📁 Project Structure
 goquant-reg-nms-matching-engine/
 │── src/
-│   ├── api/
-│   │   └── rest_api.py      # Flask API
-│   ├── core/
-│   │   ├── matching_engine.py
-│   │   ├── order.py
-│   │   └── orderbook.py
+│ ├── api/
+│ │ └── rest_api.py
+│ ├── core/
+│ │ ├── matching_engine.py
+│ │ ├── order.py
+│ │ └── orderbook.py
 │── static/
-│   └── demo.html            # Web UI demo
+│ └── demo.html
 │── requirements.txt
-│── run.py                  # Start app
+│── run.py
 │── README.md
 
-🛠️ Requirements
+---
 
-Python 3.9+
+## 🛠️ Setup
 
-Virtual environment recommended
-
-🚀 Setup & Run
-1️⃣ Clone the Repository
+### 1️⃣ Clone repo
+```bash
 git clone https://github.com/samprita123/goquant-reg-nms-matching-engine.git
 cd goquant-reg-nms-matching-engine
 
-2️⃣ Create & Activate Virtual Env
+### 2️⃣ Create virtual env
+```bash
 python -m venv venv
+
+### 3️⃣ Activate env
 # Windows
 venv\Scripts\activate
 # Mac/Linux
 source venv/bin/activate
 
-3️⃣ Install Dependencies
+### 4️⃣ Install packages
 pip install -r requirements.txt
 
-4️⃣ Start Server
+### 5️⃣ Start server
 python run.py
 
+✅ URLs
+| URL                            | Use                  |
+| ------------------------------ | -------------------- |
+| `http://localhost:8000/demo`   | UI trading simulator |
+| `http://localhost:8000/health` | Health check API     |
 
-✅ Server running at:
-
-URL	Description
-http://localhost:8000/demo	UI trading demo
-http://localhost:8000/health	Health check API
-📡 API Endpoints
-✅ Submit Order
+📡 API
+### ▶️ Submit Order
 
 POST /api/v1/order
-
 {
   "symbol": "BTCUSDT",
   "order_type": "limit",
@@ -82,52 +77,34 @@ POST /api/v1/order
   "quantity": "0.5"
 }
 
-✅ Get Orderbook
+
+### 📖 Orderbook
 
 GET /api/v1/orderbook/BTCUSDT
 
-Response:
-
-{
-  "symbol": "BTCUSDT",
-  "bids": [],
-  "asks": [],
-  "best_bid": null,
-  "best_ask": null
-}
-
-🧪 Testing via curl
-curl -X POST http://localhost:8000/api/v1/order \
+### 🔧 Test with curl
+curl -X POST "http://localhost:8000/api/v1/order" \
 -H "Content-Type: application/json" \
 -d '{"symbol":"BTCUSDT","order_type":"limit","side":"buy","price":"35000","quantity":"1"}'
 
-📌 Notes
 
-Matching engine persists in-memory (DB+Redis in future)
-
-Decimal used to avoid crypto rounding problems
-
-UI supports BTC & ETH pairs (extendable)
-
-🧭 Roadmap
+### 🧭 Roadmap
 
 ✅ Core matching engine
 
 ✅ REST API + demo UI
 
-⏳ WebSocket live updates
+🔜 WebSocket live stream
 
-⏳ Persistent order storage (Postgres/Redis)
+🔜 Persistent DB (Postgres/Redis)
 
-⏳ Multi-asset trading dashboard
+🔜 Advanced trading dashboard
 
-⏳ Docker deployment
+🔜 Docker deployment
 
 👩‍💻 Author
 
 Samprita Patra
-High-performance trading systems | ML | Web Dev
+High-performance systems | ML | Web Dev
 
-⭐ Support
-
-If this project helps you, give the repo a ⭐ on GitHub!
+⭐ If this project helped you, please star the repo!
